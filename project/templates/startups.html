@@ -1,0 +1,247 @@
+$def with (startupsTable, numPages, query, sort, tagL, url)
+
+$def startup_item(name, description, entire_item, tagList, pageNum):
+	$ tagString = ""
+	$for x in range(len(tagList)):
+		$ tagString += tagList[x]
+		$ tagString += ", "
+	$ tagString = tagString[:-4]
+	<a href = "#page$pageNum" class="hellofromtheotherside$entire_item.startup_id" data-toggle="modal" data-target="#myModal$entire_item.startup_id">
+		<div class="col-md-2 panel">
+			<div class="panel-heading">$name</div>
+			<div class="panel-body">$description</div>
+		</div>
+	</a>
+	<div class="modal fade" id="myModal$entire_item.startup_id" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"><b>$name</b></h4>
+				</div>
+				<div class="modal-body">
+				<!-- So I need... name, description, website link, twitter handle, money, contact name, contact email, contact phone, startup stage, and tags -->
+					<p>$description</p>
+					$if entire_item.startup_url.startswith("https://"):
+						<a href = "$entire_item.startup_url"><h5>$entire_item.startup_url</h5></a>
+					$else:
+						<a href = "https://$entire_item.startup_url"><h5>https://$entire_item.startup_url</h5></a>
+					<br>
+					<p><b>Stage of Development: </b>
+					$if entire_item.startup_stage == 1:
+						Early Startup/Seeding Stage
+					$if entire_item.startup_stage == 2:
+						Early Stages
+					$if entire_item.startup_stage == 3:
+						Expansion Stage
+					$if entire_item.startup_stage == 4:
+						Later Stages
+					</p>
+					<p><b>How much are we asking for?</b> \$$entire_item.startup_money</p>
+					$if entire_item.startup_twitter[0] != "@":
+						<p><b>Twitter Handle:</b> @$entire_item.startup_twitter</p>
+					$else:
+						<p><b>Twitter Handle:</b> $entire_item.startup_twitter</p>
+					<p><b>Contact: </b><p>
+					<i><p class="contact">$entire_item.contact_name</p><p class="contact">$entire_item.contact_phone</p><p class="contact">$entire_item.contact_email</p></i>
+					<br>
+					<div class="wooh"><p><i>$tagString</i></p></div>
+				</div>
+				<div class="modal-footer text-center">
+					<a href="mailto:$entire_item.contact_email?subject=Interested%20Investor%20for%20$name%20Startup" target="_top"><button type="button" class="btn btn-default">Contact This Startup</button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+$def table_row(tuplist, pageNum):
+	$if len(tuplist) == 1:
+		<table width="100%">
+			<div>
+				<div class="col-md-5"></div>
+				$:startup_item(tuplist[0][0],tuplist[0][1],tuplist[0][2], tuplist[0][3], pageNum)
+				<div class="col-md-5"></div>
+			</div>
+		</table>
+	$elif len(tuplist) == 2:
+		<table width="100%">
+			<div>
+				<div class="col-md-3"></div>
+				$:startup_item(tuplist[0][0],tuplist[0][1],tuplist[0][2], tuplist[0][3], pageNum)
+				<div class="col-md-2"></div>
+				$:startup_item(tuplist[1][0],tuplist[1][1],tuplist[1][2], tuplist[1][3], pageNum)
+				<div class="col-md-3"></div>
+			</div>
+		</table>
+	$elif len(tuplist) == 3:
+		<table width="100%">
+			<div>
+				<div class="col-md-2"></div>
+				$:startup_item(tuplist[0][0],tuplist[0][1],tuplist[0][2], tuplist[0][3], pageNum)
+				<div class="col-md-1"></div>
+				$:startup_item(tuplist[1][0],tuplist[1][1],tuplist[1][2], tuplist[1][3], pageNum)
+				<div class="col-md-1"></div>
+				$:startup_item(tuplist[2][0],tuplist[2][1],tuplist[2][2], tuplist[2][3], pageNum)
+				<div class="col-md-2"></div>
+			</div>
+		</table>
+
+$def table(portion_Table, pageNum):
+	$ count = 0
+	$while count < len(portion_Table):
+		$ tuplist = []
+		$for i in range(3):
+			$if count != len(portion_Table):
+				$ index = portion_Table[count]
+				$ tagList = (index.startup_category).split(",")
+				$ tuplist.append((index.startup_name, index.startup_description, index, tagList))
+				$ count += 1
+			$else:
+				$ break
+		$:table_row(tuplist, pageNum)
+
+$var title: Startups
+
+<!--things to take into account: text-align center, relative position, floating?, overflow hidden, making links not turn blue, panel height,
+	and also, can add the color and transparency as style-sheet classes later on-->
+<script> 
+jQuery(document).ready(function(){
+    jQuery('a.pageNumber').click(function(){
+		//the scrolltop looks kinda weird
+		//jQuery('html, body').animate({ scrollTop: 0 });
+        jQuery('a.pageNumber').removeClass('active');
+        jQuery(this).addClass('active');
+    });
+});
+</script>
+<style>
+.contact {
+	padding-left:20px;
+}
+#sorts {
+	float: left;
+	padding-left: 20px;
+}
+</style>
+
+<br><br><br><br><br>
+$ alltags = "(Tags: "
+$if len(tagL) != 0:
+	$for tag in tagL:
+		$ alltags = alltags + tag + ", "
+	$ alltags = alltags[:-2]
+	$ alltags += ")"
+
+$if query != "hasnotchangedlolol" and len(tagL) == 0:
+	<h3 class="sQ">You searched for:</h2>
+	<h4 class="sQ"><u>$query</u></h3>
+	<p class="sQ">Returned $len(startupsTable) result(s).</p>
+	<br>
+$elif query != "hasnotchangedlolol" and len(tagL) != 0:
+	<h3 class="sQ">You searched for:</h2>	
+	<h4 class="sQ"><u>$query</u></h3>
+	<h5 class="sQ"><i>$alltags</i></h5>
+	<p class="sQ">Returned $len(startupsTable) result(s).</p>
+	<br>
+$elif query == "hasnotchangedlolol" and len(tagL) != 0:
+	<h3 class="sQ"><u> A List of Boston University Startups! </u></h3>
+	<h4 class="sQ"><i>$alltags</i></h4>
+	<br><br>
+$else:
+	<h3 class="sQ"><u> A List of Boston University Startups! </u></h3>
+	<br><br>
+$if numPages == 0:
+	$:table(startupsTable, 0)
+$else:
+	<div class="cssPagination">
+		<div class="pages">
+			$for i in range(0,(numPages)):
+				$ j = i + 1
+				$ portion = []
+				$if i == (numPages - 1):
+					<div class="page" id="page$j">
+					$ portion = startupsTable[i*9:]
+					$:table(portion, j)
+					</div>
+					<div class="page" id="page1">
+					$ portion = startupsTable[:9]
+					$:table(portion, 1)
+					</div>
+				$elif i > 0: 
+					<div class="page" id="page$j">
+					$ portion = startupsTable[(i*9):(i*9 + 9)]
+					$:table(portion, j)
+					</div>
+		</div>
+		<br><br><div class="wooh">
+		<ul class="pageNav">
+			$for i in range(numPages):
+				$ x = i + 1
+				$if x == 1:
+					<li><a class="pageNumber active" href="#page$x">$x</a></li>
+				$else:
+					<li><a class="pageNumber" href="#page$x">$x</a></li>
+		</ul></div>
+	</div>
+
+<br><br><br>
+<h4 align="middle"><i>Optionally Sort By...</i></h4>
+<!--Other optional filters: most recent, most money, most viewed/popular, etc.-->
+<div class="wooh">
+$if len(tagL) == 0 and query == "hasnotchangedlolol":
+	<div id="sorts"><a href="startups?sort=alphabetical"><button type="button" class="btn btn-info">[A-Z] Startup Name</button></a></div>
+	<div id="sorts"><a href="startups?sort=startup_stage"><button type="button" class="btn btn-info">Stage of Development</button></a></div>
+$else:
+	$ urlstring = "query=" + url.query + "&" + "tags=" + url.tags + "&sort=alphabetical"
+	<div id="sorts"><a href="startups?$urlstring"><button type="button" class="btn btn-info">[A-Z] Startup Name</button></a></div>
+	$ urlstring2 = "query=" + url.query + "&" + "tags=" + url.tags + "&sort=startup_stage"
+	<div id="sorts"><a href="startups?$urlstring2"><button type="button" class="btn btn-info">Stage of Development</button></a></div>
+</div>
+<br>
+<br>
+<h4 align="middle"><i>Filter Startups By...</i></h4>
+<div class="TagFilter wooh">
+<form role="form" action ="/startups" method="POST" name="SearchAndFilter">
+    <div>
+      <input type="text" name="SAF" value="" class="form-control" placeholder="What do you want to search for?">
+    </div>
+	<br>
+	<div class="wooh">
+	<input type="submit" value="Search!" class="btn">
+	</div>
+	<br>
+	<div data-toggle="buttons">
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="Academia" autocomplete="off"> Academia </label>
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="Art" autocomplete="off"> Art </label>
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="Beauty" autocomplete="off"> Beauty </label>
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="Business" autocomplete="off"> Business </label>
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="Data" autocomplete="off"> Data </label>
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="Education" autocomplete="off"> Education </label>
+    </div>
+	<br>
+	<div class ="wooh" data-toggle="buttons">
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="Fitness" autocomplete="off"> Fitness </label>
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="Food" autocomplete="off"> Food </label>
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="Health" autocomplete="off"> Health </label>
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="Gaming" autocomplete="off"> Gaming </label>
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="IT" autocomplete="off"> IT </label>
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="Marketing" autocomplete="off"> Marketing </label>
+	</div>
+	<br>
+	<div class="wooh" data-toggle="buttons">
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="Music" autocomplete="off"> Music </label>
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="Sales" autocomplete="off"> Sales </label>
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="Shopping" autocomplete="off"> Shopping </label>
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="Travel" autocomplete="off"> Travel </label>
+		<label class="btn btn-warning"><input type="checkbox" name="SAF" value="Other" autocomplete="off"> Other </label>
+	</div>
+</form>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+
+	

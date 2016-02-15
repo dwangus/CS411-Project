@@ -1,0 +1,94 @@
+////////////////////////////
+
+Oh, and for the search bar...
+Once you get a searchquery, I guess what you could do is, once you have the startupsTable list in app.py's Startups class, what you could do is:
+	Simply go through every single item in the database, and search that startup's name, contact name, description, and big description (tags, if they're included) -- if 
+	any such item's fields returns True in .contains() (python code) for item.startup_name.contains(searchquery) || item.contact_name.contains(searchquery) || ... etc., 
+	then you add that item to an ongoing list, and then pass that list to the rest of the Startups class's code to be rendered
+	(rather, this is the appropriate python code: if (searchquery in string(item.field).lower()) || (searchquery in string(item.field).lower()) || ... etc.:
+And you can also add code like so in app.py's Startups class:
+	global searchQuery (to be able to access the searchQuery initialized and set to some input string in like the Tweets class)
+	searched = False
+	and then be like, if searchQuery is initialized to a value already:
+		searched = True
+		startupsTable = config.DB.select('startups').list()
+		newStartupsTable = []
+		newStartupsTable.append() ... blah blah code searching and matching through the database
+		if len(newStartupsTable) > 9:
+            totalnumpages = math.ceil((float(len(newStartupsTable)) / float(9)))
+            return render.startups(startupsTable = newStartupsTable, numPages = int(totalnumpages), searched = searched, query = searchQuery)
+        else:
+            return render.startups(startupsTable = newStartupsTable, numPages = 0, searched = searched, query = searchQuery)
+	else:
+		searchQuery = ""
+		startupsTable = config.DB.select('startups').list()
+        if len(startupsTable) > 9:
+            totalnumpages = math.ceil((float(len(startupsTable)) / float(9)))
+            return render.startups(startupsTable = startupsTable, numPages = int(totalnumpages), searched = searched, query = searchQuery)
+        else:
+            return render.startups(startupsTable = startupsTable, numPages = 0, searched = searched, query = searchQuery)
+Then, in startups.html:
+	$def with (startupsTable, numPages, searched, query)
+	And if searched is True, add this element:
+		like, <h1>You searched for: $query</h1>
+		and, <p>Your search returned $len(startupsTable) results. </p>
+	
+
+//////////////////////////
+
+Also, follow modal window example
+
+//////////////////////////
+
+urls = (
+    '/', 'Tweets'
+    ,'/search', 'Search'
+    ,'/FAQ' ,'FAQ'
+    ,'/about','About'
+    ,'/startups(.+)','Startups'
+    , '/applyforfunding', 'RequestFunding'
+    )
+
+class Startups:
+    def GET(self, sort):
+        startupsTable = config.DB.select('startups').list()
+        if len(startupsTable) > 9:
+            totalnumpages = math.ceil((float(len(startupsTable)) / float(9)))
+            return render.startups(startupsTable = startupsTable, numPages = int(totalnumpages), sort = sort)
+        else:
+            return render.startups(startupsTable = startupsTable, numPages = 0, sort = sort)
+
+
+
+Press a button:
+if(window.location.hostname == "localhost:8080/startups and some other thing after this"){
+   window.location.href = "localhost:8080/startups" + "some string specifying sort-by-category";
+}
+location.reload();
+
+And then somewhere in startups.html, you'll $def with (startupsTable, numPages, sort), and then 
+depending upon what string "sort" is, you'll sort the startupsTable list before rendering the html div elements
+
+(also, if sort == "", then that's the default sort)
+
+///////////////////////////
+
+Hook up email client to modal window button
+
+//////////////////////////
+
+Help debug Hanson's delete button
+
+///////////////////////////
+	
+Optional: for each panel item, display tags on the bottom
+
+And if we are doing tags, you could then implement something on the Startups class in app.py as an additional 
+	def POST(self): 
+        form = web.input()
+that has advanced options of checking all tags that apply (but not with a form for a new searchquery), and
+what it'll do is call itself again (using the raise web.redirect('/startups') function, maybe with an additional nested if statement in 
+both the searchQuery = initialized and searchQuery != initialized if statements, seeing if some other global variable tags has been initialized), 
+truncating the newStartupsTable or startupsTable if the item doesn't contain all tags in the global variable array of queried tags?
+
+//////////////////////////

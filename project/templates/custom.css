@@ -1,0 +1,21 @@
+/** Custom CSS for Risk it for the biscuit
+*
+* For CS 411 Class, Fall 2015
+*
+* Hanson Duan
+* Ash Melwani
+* Pauline Ramirez
+* David Wang
+*
+*/
+
+body  {
+    background-color: lightblue;
+}
+
+.jumbotron {
+	background-color: yellow;
+}
+  /* my change */
+
+  /* end of change*/

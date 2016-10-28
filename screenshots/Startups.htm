@@ -1,0 +1,850 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"></head><body><font color="white" size="10"> Risk It For the Biscuit </font>
+
+
+
+
+
+<title>Startups</title>
+
+<!-- css and js -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="Startups_files/bootstrap.css">
+    <script src="Startups_files/jquery.js"></script>
+    <script src="Startups_files/bootstrap.js"></script>
+    <!--<link rel="stylesheet" href="custom.css">-->
+        <!--startups.html Style Sheet for Pagination Bar -->
+        <style>
+        /* Background image for each page */
+        body  {
+            background-image: url("http://www.bluenileinfra.com/wp-content/uploads/2015/05/Savin-NY-Website-Background-Web.jpg?3710d3");
+            background-repeat: repeat-y;
+        }
+
+        .inline {
+                display: inline;
+        }
+        
+    #search {
+      padding-top: 8px;
+
+    }
+
+    #textbox {
+      width: 150px;
+      padding: 5px;
+      padding-left: 0px;
+    }
+                .modal{
+                        top:25%;
+                }
+                .modal-footer{
+                        text-align:center;
+                }
+                .cssPagination .pages > .page:target ~ .page:last-child,
+                .cssPagination .pages > .page {
+      display: none;
+    }
+                .cssPagination .pages > :last-child,
+                .cssPagination .pages > .page:target {
+      display: block;
+    }
+                ul.pageNav li {
+                        display: inline;
+                        }
+                ul.pageNav li a {
+                        color: black;
+                        float: left;
+                        padding: 8px 16px;
+                        text-decoration: none;
+                        border-radius: 5px;
+                }
+                ul.pageNav li a.active {
+                        background-color: #4CAF50;
+                        color: white;
+                        border-radius: 5px;
+                }
+                ul.pageNav li a:hover:not(.active) {
+      background-color: #ddd;
+    }
+                div.wooh {
+                        position:relative;
+                        display: table;
+                        margin: 0 auto;
+                }
+                .wooh{
+                        position:relative;
+                        display: table;
+                        margin: 0 auto;
+                }
+                .sQ {
+      text-align:center;
+    }
+                li.align0{
+      padding:10px 0px 0px 0px;
+    }
+                li.alignright{
+      padding: 5px 100px 5px 0px;
+    }
+                a.short{
+      margin-bottom:0px;
+                        margin-top:0px;
+                        border-radius: 10px;
+                        margin-left: 0px
+                        height: 80px;
+                        }
+                a.btn{
+      background: #FFEBCD;
+                        border-style:solid;
+                        border-width:3px;
+                        border-color: #FFFACD;
+                        padding:0px 0px 3px 0px;
+    }
+                li.align1{
+      padding:18px 10px 0px 60px;
+                        margin-bottom:-2px;
+                        }
+                li.align2{
+      padding:10px 0px 0px 100px;
+    }
+
+                .jumbotron {
+                background-color: rgba(255, 255, 255, 0.25);
+        }
+        </style>
+
+<!-- navigation bar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="align0"><a href="http://localhost:8080/">Home</a></li>
+        <li class="align0"><a href="http://localhost:8080/about">About</a></li>
+        <li class="align0"><a href="http://localhost:8080/FAQ"> FAQ </a></li>
+        <li class="align0"><a href="http://localhost:8080/startups">Startups</a></li> 
+                <!--<li class="align0"><a href="delete">Delete</a></li>-->
+        <li class="align1">
+                <form action="/" method="POST">
+                                <input name="bar" placeholder="  What startup?" id="textbox" type="text">
+                                <input value="Find Startups!" class="btn" type="submit">
+                </form> 
+        </li>
+        <li class="align2">
+                        <form action="/" method="POST" name="tweets" id="search">
+                        <input name="tweets" placeholder="  What's trending?" id="textbox" type="text">
+                        <input value="Search Twitter" class="btn" type="submit">
+                        </form>
+                </li>
+      </ul>
+
+       <ul class="nav navbar-nav navbar-right">
+          <li class="alignright"><a href="http://localhost:8080/applyforfunding" class="btn short btn-xs">
+            <span class="glyphicon glyphicon-log-in"></span>
+              <b>Apply for Funding</b>
+            </a>
+          </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+  
+
+<!--things to take into account: text-align center, relative position, floating?, overflow hidden, making links not turn blue, panel height,
+        and also, can add the color and transparency as style-sheet classes later on-->
+<script> 
+jQuery(document).ready(function(){
+    jQuery('a.pageNumber').click(function(){
+                //the scrolltop looks kinda weird
+                //jQuery('html, body').animate({ scrollTop: 0 });
+        jQuery('a.pageNumber').removeClass('active');
+        jQuery(this).addClass('active');
+    });
+});
+</script>
+<style>
+.contact {
+        padding-left:20px;
+}
+#sorts {
+        float: left;
+        padding-left: 20px;
+}
+</style>
+
+<br><br><br><br><br>
+    <h3 class="sQ"><u> A List of Boston University Startups! </u></h3>
+    <br><br>
+    <div class="cssPagination">
+            <div class="pages">
+                            <div class="page" id="page2">
+                                            <div>
+                        <div class="col-md-2"></div>
+                            <a href="#page2" class="hellofromtheotherside10" data-toggle="modal" data-target="#myModal10">
+            <div class="col-md-2 panel">
+                    <div class="panel-heading">Melan</div>
+                    <div class="panel-body">Mel an noster intellegat, 
+nam vitae alienum et. Primis nusquam usu eu. Falli epicurei euripidis id
+ nec. At duo adhuc vitae soleat, clita aliquid periculis ex eam.
+
+Dolorem mandamus delicatissimi mea ea, diam unum commune no vel, eum 
+simul habemus euripidis cu. Brute nonumes dolorem vel ex, an cum ridens 
+appareat quaestio. Quo ei eius paulo, ut modus nostrum efficiantur nec. 
+Ne nam pertinacia democritum. Duo ea illud soluta percipit. Sea ut 
+facete diceret praesent, mel simul tincidunt eu.</div>
+            </div>
+    </a>
+    <div class="modal fade" id="myModal10" role="dialog">
+            <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    <h4 class="modal-title"><b>Melan</b></h4>
+                            </div>
+                            <div class="modal-body">
+                            <!-- So I need... name, description, website link, twitter handle, money, contact name, contact email, contact phone, startup stage, and tags -->
+                                    <p>Mel an noster intellegat, nam 
+vitae alienum et. Primis nusquam usu eu. Falli epicurei euripidis id 
+nec. At duo adhuc vitae soleat, clita aliquid periculis ex eam.
+
+Dolorem mandamus delicatissimi mea ea, diam unum commune no vel, eum 
+simul habemus euripidis cu. Brute nonumes dolorem vel ex, an cum ridens 
+appareat quaestio. Quo ei eius paulo, ut modus nostrum efficiantur nec. 
+Ne nam pertinacia democritum. Duo ea illud soluta percipit. Sea ut 
+facete diceret praesent, mel simul tincidunt eu.</p>
+                                        <a href="https://theonion.com/"><h5>https://theonion.com</h5></a>
+                                    <br>
+                                    <p><b>Stage of Development: </b>
+                                        Early Startup/Seeding Stage
+                                    </p>
+                                    <p><b>How much are we asking for?</b> $66666</p>
+                                        <p><b>Twitter Handle:</b> @twitter_handle6</p>
+                                    <p><b>Contact: </b></p><p>
+                                    <i></i></p><p class="contact"><i>Justin Bieber</i></p><p class="contact"><i>1010101010</i></p><p class="contact"><i>beliebethehype@hotmail.com</i></p>
+                                    <br>
+                                    <div class="wooh"><p><i>Tags: Art,  Music,  Other</i></p></div>
+                            </div>
+                            <div class="modal-footer text-center">
+                                    <a href="mailto:beliebethehype@hotmail.com?subject=Interested%20Investor%20for%20Melan%20Startup" target="_top"><button type="button" class="btn btn-default">Contact This Startup</button></a>
+                            </div>
+                    </div>
+            </div>
+    </div>
+
+
+                        <div class="col-md-1"></div>
+                            <a href="#page2" class="hellofromtheotherside11" data-toggle="modal" data-target="#myModal11">
+            <div class="col-md-2 panel">
+                    <div class="panel-heading">Ex Offendit</div>
+                    <div class="panel-body">Ex offendit epicurei usu. In sea dolor suscipit adolescens.
+</div>
+            </div>
+    </a>
+    <div class="modal fade" id="myModal11" role="dialog">
+            <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    <h4 class="modal-title"><b>Ex Offendit</b></h4>
+                            </div>
+                            <div class="modal-body">
+                            <!-- So I need... name, description, website link, twitter handle, money, contact name, contact email, contact phone, startup stage, and tags -->
+                                    <p>Ex offendit epicurei usu. In sea dolor suscipit adolescens.
+</p>
+                                        <a href="https://hello.com/"><h5>https://hello.com</h5></a>
+                                    <br>
+                                    <p><b>Stage of Development: </b>
+                                        Early Stages
+                                    </p>
+                                    <p><b>How much are we asking for?</b> $894590</p>
+                                        <p><b>Twitter Handle:</b> @twitter_handle6</p>
+                                    <p><b>Contact: </b></p><p>
+                                    <i></i></p><p class="contact"><i>Adele</i></p><p class="contact"><i>1110111011</i></p><p class="contact"><i>helloooo@hotmail.com</i></p>
+                                    <br>
+                                    <div class="wooh"><p><i>Tags: Health,  Music,  Travel</i></p></div>
+                            </div>
+                            <div class="modal-footer text-center">
+                                    <a href="mailto:helloooo@hotmail.com?subject=Interested%20Investor%20for%20Ex%20Offendit%20Startup" target="_top"><button type="button" class="btn btn-default">Contact This Startup</button></a>
+                            </div>
+                    </div>
+            </div>
+    </div>
+
+
+                        <div class="col-md-1"></div>
+                            <a href="#page2" class="hellofromtheotherside12" data-toggle="modal" data-target="#myModal12">
+            <div class="col-md-2 panel">
+                    <div class="panel-heading">Totally Legit Startup</div>
+                    <div class="panel-body">Only the best of good things most people will be willing to want to buy</div>
+            </div>
+    </a>
+    <div class="modal fade" id="myModal12" role="dialog">
+            <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    <h4 class="modal-title"><b>Totally Legit Startup</b></h4>
+                            </div>
+                            <div class="modal-body">
+                            <!-- So I need... name, description, website link, twitter handle, money, contact name, contact email, contact phone, startup stage, and tags -->
+                                    <p>Only the best of good things most people will be willing to want to buy</p>
+                                        <a href="https://reddit.com/"><h5>https://reddit.com</h5></a>
+                                    <br>
+                                    <p><b>Stage of Development: </b>
+                                        Early Startup/Seeding Stage
+                                    </p>
+                                    <p><b>How much are we asking for?</b> $1000000</p>
+                                        <p><b>Twitter Handle:</b> @legit_startup</p>
+                                    <p><b>Contact: </b></p><p>
+                                    <i></i></p><p class="contact"><i>Paul Rudd</i></p><p class="contact"><i>666-666-6666</i></p><p class="contact"><i>whatacruddyday@hotmail.com</i></p>
+                                    <br>
+                                    <div class="wooh"><p><i>Tags: Art,  Beauty,  Business,  Data</i></p></div>
+                            </div>
+                            <div class="modal-footer text-center">
+                                    <a href="mailto:whatacruddyday@hotmail.com?subject=Interested%20Investor%20for%20Totally%20Legit%20Startup%20Startup" target="_top"><button type="button" class="btn btn-default">Contact This Startup</button></a>
+                            </div>
+                    </div>
+            </div>
+    </div>
+
+
+                        <div class="col-md-2"></div>
+                </div><table width="100%">
+                
+        </table>
+    
+
+    
+
+                            </div>
+                            <div class="page" id="page1">
+                                            <div>
+                        <div class="col-md-2"></div>
+                            <a href="#page1" class="hellofromtheotherside1" data-toggle="modal" data-target="#myModal1">
+            <div class="col-md-2 panel">
+                    <div class="panel-heading">UNItiques</div>
+                    <div class="panel-body">Unitiques is a free student 
+market place. They are the biggest, safest clothing swap for college 
+students (only). Trade clothes and more on your campus and surrounding 
+areas!</div>
+            </div>
+    </a>
+    <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    <h4 class="modal-title"><b>UNItiques</b></h4>
+                            </div>
+                            <div class="modal-body">
+                            <!-- So I need... name, description, website link, twitter handle, money, contact name, contact email, contact phone, startup stage, and tags -->
+                                    <p>Unitiques is a free student 
+market place. They are the biggest, safest clothing swap for college 
+students (only). Trade clothes and more on your campus and surrounding 
+areas!</p>
+                                        <a href="https://www.unitiques.com/"><h5>https://www.unitiques.com</h5></a>
+                                    <br>
+                                    <p><b>Stage of Development: </b>
+                                        Expansion Stage
+                                    </p>
+                                    <p><b>How much are we asking for?</b> $12390</p>
+                                        <p><b>Twitter Handle:</b> @Unitiques</p>
+                                    <p><b>Contact: </b></p><p>
+                                    <i></i></p><p class="contact"><i>Johnny Depp</i></p><p class="contact"><i>111-111-1111</i></p><p class="contact"><i>sodeep@hotmail.com</i></p>
+                                    <br>
+                                    <div class="wooh"><p><i>Tags: Business,  Marketing,  Sales,  Shopping</i></p></div>
+                            </div>
+                            <div class="modal-footer text-center">
+                                    <a href="mailto:sodeep@hotmail.com?subject=Interested%20Investor%20for%20UNItiques%20Startup" target="_top"><button type="button" class="btn btn-default">Contact This Startup</button></a>
+                            </div>
+                    </div>
+            </div>
+    </div>
+
+
+                        <div class="col-md-1"></div>
+                            <a href="#page1" class="hellofromtheotherside2" data-toggle="modal" data-target="#myModal2">
+            <div class="col-md-2 panel">
+                    <div class="panel-heading">Nxtfour</div>
+                    <div class="panel-body">Nxtfour is an online 
+platform for high school students interested in creating a 3D resume 
+consisting of grades, activities and anything from an art portfolio to 
+highlight tapes. By creating a Nxtfour profile, students are able to 
+showcase their talents and achievements to colleges and future 
+employers. Students can connect with their friends and other students 
+applying to their same colleges.</div>
+            </div>
+    </a>
+    <div class="modal fade" id="myModal2" role="dialog">
+            <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    <h4 class="modal-title"><b>Nxtfour</b></h4>
+                            </div>
+                            <div class="modal-body">
+                            <!-- So I need... name, description, website link, twitter handle, money, contact name, contact email, contact phone, startup stage, and tags -->
+                                    <p>Nxtfour is an online platform for
+ high school students interested in creating a 3D resume consisting of 
+grades, activities and anything from an art portfolio to highlight 
+tapes. By creating a Nxtfour profile, students are able to showcase 
+their talents and achievements to colleges and future employers. 
+Students can connect with their friends and other students applying to 
+their same colleges.</p>
+                                        <a href="https://www.nxtfour.com/"><h5>https://www.nxtfour.com</h5></a>
+                                    <br>
+                                    <p><b>Stage of Development: </b>
+                                        Early Stages
+                                    </p>
+                                    <p><b>How much are we asking for?</b> $43095</p>
+                                        <p><b>Twitter Handle:</b> @nxtfour</p>
+                                    <p><b>Contact: </b></p><p>
+                                    <i></i></p><p class="contact"><i>Nick Cage</i></p><p class="contact"><i>222-222-2222</i></p><p class="contact"><i>cagetherage@hotmail.com</i></p>
+                                    <br>
+                                    <div class="wooh"><p><i>Tags: Education,  Marketing</i></p></div>
+                            </div>
+                            <div class="modal-footer text-center">
+                                    <a href="mailto:cagetherage@hotmail.com?subject=Interested%20Investor%20for%20Nxtfour%20Startup" target="_top"><button type="button" class="btn btn-default">Contact This Startup</button></a>
+                            </div>
+                    </div>
+            </div>
+    </div>
+
+
+                        <div class="col-md-1"></div>
+                            <a href="#page1" class="hellofromtheotherside3" data-toggle="modal" data-target="#myModal3">
+            <div class="col-md-2 panel">
+                    <div class="panel-heading">Lorem Ipsum</div>
+                    <div class="panel-body">Lorem ipsum dolor sit amet, 
+vim ad hinc ferri definiebas, vix munere omnesque no. Sea id oblique 
+euismod constituto. Usu ne tota gloriatur, at quis intellegat per. Ex 
+offendit epicurei usu. In sea dolor suscipit adolescens.</div>
+            </div>
+    </a>
+    <div class="modal fade" id="myModal3" role="dialog">
+            <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    <h4 class="modal-title"><b>Lorem Ipsum</b></h4>
+                            </div>
+                            <div class="modal-body">
+                            <!-- So I need... name, description, website link, twitter handle, money, contact name, contact email, contact phone, startup stage, and tags -->
+                                    <p>Lorem ipsum dolor sit amet, vim 
+ad hinc ferri definiebas, vix munere omnesque no. Sea id oblique euismod
+ constituto. Usu ne tota gloriatur, at quis intellegat per. Ex offendit 
+epicurei usu. In sea dolor suscipit adolescens.</p>
+                                        <a href="https://lipsum.com/"><h5>https://lipsum.com</h5></a>
+                                    <br>
+                                    <p><b>Stage of Development: </b>
+                                        Early Startup/Seeding Stage
+                                    </p>
+                                    <p><b>How much are we asking for?</b> $3895</p>
+                                        <p><b>Twitter Handle:</b> @loremipsum</p>
+                                    <p><b>Contact: </b></p><p>
+                                    <i></i></p><p class="contact"><i>Jennifer Lawrence</i></p><p class="contact"><i>333-333-3333</i></p><p class="contact"><i>jaythelawdown@hotmail.com</i></p>
+                                    <br>
+                                    <div class="wooh"><p><i>Tags: Health,  Sales</i></p></div>
+                            </div>
+                            <div class="modal-footer text-center">
+                                    <a href="mailto:jaythelawdown@hotmail.com?subject=Interested%20Investor%20for%20Lorem%20Ipsum%20Startup" target="_top"><button type="button" class="btn btn-default">Contact This Startup</button></a>
+                            </div>
+                    </div>
+            </div>
+    </div>
+
+
+                        <div class="col-md-2"></div>
+                </div><table width="100%">
+                
+        </table>
+    
+
+    
+                <div>
+                        <div class="col-md-2"></div>
+                            <a href="#page1" class="hellofromtheotherside4" data-toggle="modal" data-target="#myModal4">
+            <div class="col-md-2 panel">
+                    <div class="panel-heading">Aliquam</div>
+                    <div class="panel-body">Aliquam maluisset pri cu, 
+vel at elaboraret dissentiet mediocritatem, ex sed suscipit democritum 
+contentiones. Mei ad sumo evertitur honestatis, sumo erat oblique an 
+quo. Mel an noster intellegat, nam vitae alienum et. Primis nusquam usu 
+eu. Falli epicurei euripidis id nec. At duo adhuc vitae soleat, clita 
+aliquid periculis ex eam.</div>
+            </div>
+    </a>
+    <div class="modal fade" id="myModal4" role="dialog">
+            <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    <h4 class="modal-title"><b>Aliquam</b></h4>
+                            </div>
+                            <div class="modal-body">
+                            <!-- So I need... name, description, website link, twitter handle, money, contact name, contact email, contact phone, startup stage, and tags -->
+                                    <p>Aliquam maluisset pri cu, vel at 
+elaboraret dissentiet mediocritatem, ex sed suscipit democritum 
+contentiones. Mei ad sumo evertitur honestatis, sumo erat oblique an 
+quo. Mel an noster intellegat, nam vitae alienum et. Primis nusquam usu 
+eu. Falli epicurei euripidis id nec. At duo adhuc vitae soleat, clita 
+aliquid periculis ex eam.</p>
+                                        <a href="https://google.com/"><h5>https://google.com</h5></a>
+                                    <br>
+                                    <p><b>Stage of Development: </b>
+                                        Early Startup/Seeding Stage
+                                    </p>
+                                    <p><b>How much are we asking for?</b> $1231545093</p>
+                                        <p><b>Twitter Handle:</b> @aliquam</p>
+                                    <p><b>Contact: </b></p><p>
+                                    <i></i></p><p class="contact"><i>Chris Brown</i></p><p class="contact"><i>444-4444-444</i></p><p class="contact"><i>yeahyeahyeah@hotmail.com</i></p>
+                                    <br>
+                                    <div class="wooh"><p><i>Tags: Education,  Fitness,  IT,  Travel</i></p></div>
+                            </div>
+                            <div class="modal-footer text-center">
+                                    <a href="mailto:yeahyeahyeah@hotmail.com?subject=Interested%20Investor%20for%20Aliquam%20Startup" target="_top"><button type="button" class="btn btn-default">Contact This Startup</button></a>
+                            </div>
+                    </div>
+            </div>
+    </div>
+
+
+                        <div class="col-md-1"></div>
+                            <a href="#page1" class="hellofromtheotherside5" data-toggle="modal" data-target="#myModal5">
+            <div class="col-md-2 panel">
+                    <div class="panel-heading">Vis Ex</div>
+                    <div class="panel-body">Vis ex veri zril semper. Ei 
+per quas invidunt, an mollis philosophia sit. Latine eligendi 
+delicatissimi eum ea, sit ex omnis liber, tibique omnesque an quo. Qui 
+assum reprimique ne.</div>
+            </div>
+    </a>
+    <div class="modal fade" id="myModal5" role="dialog">
+            <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    <h4 class="modal-title"><b>Vis Ex</b></h4>
+                            </div>
+                            <div class="modal-body">
+                            <!-- So I need... name, description, website link, twitter handle, money, contact name, contact email, contact phone, startup stage, and tags -->
+                                    <p>Vis ex veri zril semper. Ei per 
+quas invidunt, an mollis philosophia sit. Latine eligendi delicatissimi 
+eum ea, sit ex omnis liber, tibique omnesque an quo. Qui assum 
+reprimique ne.</p>
+                                        <a href="https://gmail.com/"><h5>https://gmail.com</h5></a>
+                                    <br>
+                                    <p><b>Stage of Development: </b>
+                                        Early Stages
+                                    </p>
+                                    <p><b>How much are we asking for?</b> $89053</p>
+                                        <p><b>Twitter Handle:</b> @twitter_handle</p>
+                                    <p><b>Contact: </b></p><p>
+                                    <i></i></p><p class="contact"><i>Barack Obama</i></p><p class="contact"><i>5555555555</i></p><p class="contact"><i>onceyougobarack@hotmail.com</i></p>
+                                    <br>
+                                    <div class="wooh"><p><i>Tags: Data,  Food,  Gaming,  Music</i></p></div>
+                            </div>
+                            <div class="modal-footer text-center">
+                                    <a href="mailto:onceyougobarack@hotmail.com?subject=Interested%20Investor%20for%20Vis%20Ex%20Startup" target="_top"><button type="button" class="btn btn-default">Contact This Startup</button></a>
+                            </div>
+                    </div>
+            </div>
+    </div>
+
+
+                        <div class="col-md-1"></div>
+                            <a href="#page1" class="hellofromtheotherside6" data-toggle="modal" data-target="#myModal6">
+            <div class="col-md-2 panel">
+                    <div class="panel-heading">Hasei</div>
+                    <div class="panel-body">Has ei aperiri persius. Te 
+ius persecuti complectitur. Mei no veritus senserit evertitur. Quo ex 
+novum dictas causae. Id case concludaturque his, vel eu meis pericula 
+consetetur.</div>
+            </div>
+    </a>
+    <div class="modal fade" id="myModal6" role="dialog">
+            <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    <h4 class="modal-title"><b>Hasei</b></h4>
+                            </div>
+                            <div class="modal-body">
+                            <!-- So I need... name, description, website link, twitter handle, money, contact name, contact email, contact phone, startup stage, and tags -->
+                                    <p>Has ei aperiri persius. Te ius 
+persecuti complectitur. Mei no veritus senserit evertitur. Quo ex novum 
+dictas causae. Id case concludaturque his, vel eu meis pericula 
+consetetur.</p>
+                                        <a href="https://yahoo.com/"><h5>https://yahoo.com</h5></a>
+                                    <br>
+                                    <p><b>Stage of Development: </b>
+                                        Later Stages
+                                    </p>
+                                    <p><b>How much are we asking for?</b> $84679</p>
+                                        <p><b>Twitter Handle:</b> @twitter_handle2</p>
+                                    <p><b>Contact: </b></p><p>
+                                    <i></i></p><p class="contact"><i>Bradley Cooper</i></p><p class="contact"><i>6666666666</i></p><p class="contact"><i>allcoopedup@hotmail.com</i></p>
+                                    <br>
+                                    <div class="wooh"><p><i>Tags: IT,  Marketing,  Music,  Sales</i></p></div>
+                            </div>
+                            <div class="modal-footer text-center">
+                                    <a href="mailto:allcoopedup@hotmail.com?subject=Interested%20Investor%20for%20Hasei%20Startup" target="_top"><button type="button" class="btn btn-default">Contact This Startup</button></a>
+                            </div>
+                    </div>
+            </div>
+    </div>
+
+
+                        <div class="col-md-2"></div>
+                </div><table width="100%">
+                
+        </table>
+    
+
+    
+                <div>
+                        <div class="col-md-2"></div>
+                            <a href="#page1" class="hellofromtheotherside7" data-toggle="modal" data-target="#myModal7">
+            <div class="col-md-2 panel">
+                    <div class="panel-heading">Dolorem</div>
+                    <div class="panel-body">Dolorem mandamus 
+delicatissimi mea ea, diam unum commune no vel, eum simul habemus 
+euripidis cu. Brute nonumes dolorem vel ex, an cum ridens appareat 
+quaestio. Quo ei eius paulo, ut modus nostrum efficiantur nec. Ne nam 
+pertinacia democritum. Duo ea illud soluta percipit. Sea ut facete 
+diceret praesent, mel simul tincidunt eu.</div>
+            </div>
+    </a>
+    <div class="modal fade" id="myModal7" role="dialog">
+            <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    <h4 class="modal-title"><b>Dolorem</b></h4>
+                            </div>
+                            <div class="modal-body">
+                            <!-- So I need... name, description, website link, twitter handle, money, contact name, contact email, contact phone, startup stage, and tags -->
+                                    <p>Dolorem mandamus delicatissimi 
+mea ea, diam unum commune no vel, eum simul habemus euripidis cu. Brute 
+nonumes dolorem vel ex, an cum ridens appareat quaestio. Quo ei eius 
+paulo, ut modus nostrum efficiantur nec. Ne nam pertinacia democritum. 
+Duo ea illud soluta percipit. Sea ut facete diceret praesent, mel simul 
+tincidunt eu.</p>
+                                        <a href="https://reddit.com/"><h5>https://reddit.com</h5></a>
+                                    <br>
+                                    <p><b>Stage of Development: </b>
+                                        Early Stages
+                                    </p>
+                                    <p><b>How much are we asking for?</b> $89896</p>
+                                        <p><b>Twitter Handle:</b> @twitter_handle3</p>
+                                    <p><b>Contact: </b></p><p>
+                                    <i></i></p><p class="contact"><i>Keanu Reeves</i></p><p class="contact"><i>7777777777</i></p><p class="contact"><i>iliketodomyownstunts@hotmail.com</i></p>
+                                    <br>
+                                    <div class="wooh"><p><i>Tags: Art,  Business,  Data,  Health</i></p></div>
+                            </div>
+                            <div class="modal-footer text-center">
+                                    <a href="mailto:iliketodomyownstunts@hotmail.com?subject=Interested%20Investor%20for%20Dolorem%20Startup" target="_top"><button type="button" class="btn btn-default">Contact This Startup</button></a>
+                            </div>
+                    </div>
+            </div>
+    </div>
+
+
+                        <div class="col-md-1"></div>
+                            <a href="#page1" class="hellofromtheotherside8" data-toggle="modal" data-target="#myModal8">
+            <div class="col-md-2 panel">
+                    <div class="panel-heading">NoNumes</div>
+                    <div class="panel-body">Brute nonumes dolorem vel 
+ex, an cum ridens appareat quaestio. Quo ei eius paulo, ut modus nostrum
+ efficiantur nec. Ne nam pertinacia democritum. Duo ea illud soluta 
+percipit. Sea ut facete diceret praesent, mel simul tincidunt eu.</div>
+            </div>
+    </a>
+    <div class="modal fade" id="myModal8" role="dialog">
+            <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    <h4 class="modal-title"><b>NoNumes</b></h4>
+                            </div>
+                            <div class="modal-body">
+                            <!-- So I need... name, description, website link, twitter handle, money, contact name, contact email, contact phone, startup stage, and tags -->
+                                    <p>Brute nonumes dolorem vel ex, an 
+cum ridens appareat quaestio. Quo ei eius paulo, ut modus nostrum 
+efficiantur nec. Ne nam pertinacia democritum. Duo ea illud soluta 
+percipit. Sea ut facete diceret praesent, mel simul tincidunt eu.</p>
+                                        <a href="https://http//www.azlyrics.com/lyrics/hozier/someonenew.html"><h5>https://http://www.azlyrics.com/lyrics/hozier/someonenew.html</h5></a>
+                                    <br>
+                                    <p><b>Stage of Development: </b>
+                                        Early Startup/Seeding Stage
+                                    </p>
+                                    <p><b>How much are we asking for?</b> $895223</p>
+                                        <p><b>Twitter Handle:</b> @twitter_handle4</p>
+                                    <p><b>Contact: </b></p><p>
+                                    <i></i></p><p class="contact"><i>Neil deGrasse Tyson</i></p><p class="contact"><i>8888888888</i></p><p class="contact"><i>whoalookatthestars@hotmail.com</i></p>
+                                    <br>
+                                    <div class="wooh"><p><i>Tags: Art,  Beauty,  Data</i></p></div>
+                            </div>
+                            <div class="modal-footer text-center">
+                                    <a href="mailto:whoalookatthestars@hotmail.com?subject=Interested%20Investor%20for%20NoNumes%20Startup" target="_top"><button type="button" class="btn btn-default">Contact This Startup</button></a>
+                            </div>
+                    </div>
+            </div>
+    </div>
+
+
+                        <div class="col-md-1"></div>
+                            <a href="#page1" class="hellofromtheotherside9" data-toggle="modal" data-target="#myModal9">
+            <div class="col-md-2 panel">
+                    <div class="panel-heading">Usune</div>
+                    <div class="panel-body">Usu ne tota gloriatur, at 
+quis intellegat per. Ex offendit epicurei usu. In sea dolor suscipit 
+adolescens.
+
+Aliquam maluisset pri cu, vel at elaboraret dissentiet mediocritatem, ex
+ sed suscipit democritum contentiones. Mei ad sumo evertitur honestatis,
+ sumo erat oblique an quo. Mel an noster intellegat, nam vitae alienum 
+et. Primis nusquam usu eu. Falli epicurei euripidis id nec. At duo adhuc
+ vitae soleat, clita aliquid periculis ex eam.
+
+Vis ex veri zril semper. Ei per quas invidunt, an mollis philosophia 
+sit. Latine eligendi delicatissimi eum ea, sit ex omnis liber, tibique 
+omnesque an quo. Qui assum reprimique ne.</div>
+            </div>
+    </a>
+    <div class="modal fade" id="myModal9" role="dialog">
+            <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    <h4 class="modal-title"><b>Usune</b></h4>
+                            </div>
+                            <div class="modal-body">
+                            <!-- So I need... name, description, website link, twitter handle, money, contact name, contact email, contact phone, startup stage, and tags -->
+                                    <p>Usu ne tota gloriatur, at quis 
+intellegat per. Ex offendit epicurei usu. In sea dolor suscipit 
+adolescens.
+
+Aliquam maluisset pri cu, vel at elaboraret dissentiet mediocritatem, ex
+ sed suscipit democritum contentiones. Mei ad sumo evertitur honestatis,
+ sumo erat oblique an quo. Mel an noster intellegat, nam vitae alienum 
+et. Primis nusquam usu eu. Falli epicurei euripidis id nec. At duo adhuc
+ vitae soleat, clita aliquid periculis ex eam.
+
+Vis ex veri zril semper. Ei per quas invidunt, an mollis philosophia 
+sit. Latine eligendi delicatissimi eum ea, sit ex omnis liber, tibique 
+omnesque an quo. Qui assum reprimique ne.</p>
+                                        <a href="https://http//www.lincolnschoolfoundation.org/"><h5>https://http://www.lincolnschoolfoundation.org/</h5></a>
+                                    <br>
+                                    <p><b>Stage of Development: </b>
+                                        Early Startup/Seeding Stage
+                                    </p>
+                                    <p><b>How much are we asking for?</b> $4</p>
+                                        <p><b>Twitter Handle:</b> @twitter_handle5</p>
+                                    <p><b>Contact: </b></p><p>
+                                    <i></i></p><p class="contact"><i>Abraham Lincoln</i></p><p class="contact"><i>9999999999</i></p><p class="contact"><i>jwilkesbooth@hotmail.com</i></p>
+                                    <br>
+                                    <div class="wooh"><p><i>Tags: Fitness,  IT,  Sales</i></p></div>
+                            </div>
+                            <div class="modal-footer text-center">
+                                    <a href="mailto:jwilkesbooth@hotmail.com?subject=Interested%20Investor%20for%20Usune%20Startup" target="_top"><button type="button" class="btn btn-default">Contact This Startup</button></a>
+                            </div>
+                    </div>
+            </div>
+    </div>
+
+
+                        <div class="col-md-2"></div>
+                </div><table width="100%">
+                
+        </table>
+    
+
+    
+
+                            </div>
+            </div>
+            <br><br><div class="wooh">
+            <ul class="pageNav">
+                            <li><a class="pageNumber active" href="#page1">1</a></li>
+                            <li><a class="pageNumber" href="#page2">2</a></li>
+            </ul></div>
+    </div>
+
+<br><br><br>
+<h4 align="center"><i>Optionally Sort By...</i></h4>
+<!--Other optional filters: most recent, most money, most viewed/popular, etc.-->
+<div class="wooh">
+    <div id="sorts"><a href="http://localhost:8080/startups?sort=alphabetical"><button type="button" class="btn btn-info">[A-Z] Startup Name</button></a></div>
+    <div id="sorts"><a href="http://localhost:8080/startups?sort=startup_stage"><button type="button" class="btn btn-info">Stage of Development</button></a></div>
+</div>
+<br>
+<br>
+<h4 align="center"><i>Filter Startups By...</i></h4>
+<div class="TagFilter wooh">
+<form role="form" action="/startups" method="POST" name="SearchAndFilter">
+    <div>
+      <input name="SAF" class="form-control" placeholder="What do you want to search for?" type="text">
+    </div>
+        <br>
+        <div class="wooh">
+        <input value="Search!" class="btn" type="submit">
+        </div>
+        <br>
+        <div data-toggle="buttons">
+                <label class="btn btn-warning"><input name="SAF" value="Academia" autocomplete="off" type="checkbox"> Academia </label>
+                <label class="btn btn-warning"><input name="SAF" value="Art" autocomplete="off" type="checkbox"> Art </label>
+                <label class="btn btn-warning"><input name="SAF" value="Beauty" autocomplete="off" type="checkbox"> Beauty </label>
+                <label class="btn btn-warning"><input name="SAF" value="Business" autocomplete="off" type="checkbox"> Business </label>
+                <label class="btn btn-warning"><input name="SAF" value="Data" autocomplete="off" type="checkbox"> Data </label>
+                <label class="btn btn-warning"><input name="SAF" value="Education" autocomplete="off" type="checkbox"> Education </label>
+    </div>
+        <br>
+        <div class="wooh" data-toggle="buttons">
+                <label class="btn btn-warning"><input name="SAF" value="Fitness" autocomplete="off" type="checkbox"> Fitness </label>
+                <label class="btn btn-warning"><input name="SAF" value="Food" autocomplete="off" type="checkbox"> Food </label>
+                <label class="btn btn-warning"><input name="SAF" value="Health" autocomplete="off" type="checkbox"> Health </label>
+                <label class="btn btn-warning"><input name="SAF" value="Gaming" autocomplete="off" type="checkbox"> Gaming </label>
+                <label class="btn btn-warning"><input name="SAF" value="IT" autocomplete="off" type="checkbox"> IT </label>
+                <label class="btn btn-warning"><input name="SAF" value="Marketing" autocomplete="off" type="checkbox"> Marketing </label>
+        </div>
+        <br>
+        <div class="wooh" data-toggle="buttons">
+                <label class="btn btn-warning"><input name="SAF" value="Music" autocomplete="off" type="checkbox"> Music </label>
+                <label class="btn btn-warning"><input name="SAF" value="Sales" autocomplete="off" type="checkbox"> Sales </label>
+                <label class="btn btn-warning"><input name="SAF" value="Shopping" autocomplete="off" type="checkbox"> Shopping </label>
+                <label class="btn btn-warning"><input name="SAF" value="Travel" autocomplete="off" type="checkbox"> Travel </label>
+                <label class="btn btn-warning"><input name="SAF" value="Other" autocomplete="off" type="checkbox"> Other </label>
+        </div>
+</form>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+
+        
+
+
+
+
+</body></html>
